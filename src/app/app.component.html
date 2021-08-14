@@ -11,15 +11,19 @@
 </ul>
 
 <div id="modal" class="animated flipInX" *ngIf="mode == 'add'">
+  <h2 class="text-center">Nova Tarefa</h2>
   <form [formGroup]="form">
-    <fieldset>
-      <label>Tarefa:</label>
-      <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title">
-      <small *ngIf="form.controls.title.invalid && !form.controls.title.pristine">Este campo deve conter entre 5 e 30 caracteres</small>
-      <br><br>
-      <button class="button" (click)="add()" [disabled]="form.invalid">Salvar</button>
-    </fieldset>
+    <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title">
+    <small class="danger" *ngIf="form.controls.title.invalid && !form.controls.title.pristine">
+      Este campo deve conter entre 5 e 30 caracteres<br>
+    </small>
+    <p class="text-center">
+      <button class="button" (click)="add()" [disabled]="form.invalid">
+        <i class="far fa-save"></i> Salvar
+      </button>
+    </p>
   </form>
+  <br><br>
 </div>
 
 <button class="add-button animated fadeInUp button" (click)="changeMode('add')" *ngIf="mode == 'list'">
